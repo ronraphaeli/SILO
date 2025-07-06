@@ -186,3 +186,15 @@ more options are available in the arguments
 Note that for training, you must use some dataset that is not provided in the zip file (because of file size).
 You can download FFHQ from `Ryan-sjtu/ffhq512-caption` or download LSDIR from `danjacobellis/LSDIR`.
 Just replace the dataset loading to `load_dataset` instead of `load_from_disk` with one of these. for example use `load_dataset('Ryan-sjtu/ffhq512-caption')`, after adding `from datasets import load_dataset`.
+
+
+## 5: Additional info
+In this section, I wanted to share some insights I gained while working on SILO. 
+These thoughts are not organized, but they will probably help those who aim to extend SILO beyond its current scope.
+
+The training and inference of SILO have different objectives. While training, the operator learns to output a degraded latent. But, during inference, we care about the *gradient* of the operator. This difference can explain why some architectures yield bad reconstruction while having a lower loss, compared to other networks that have a higher loss. Solving this discrepancy might stabilize the training and sampling process. 
+
+Another point is the architecture. We almost did not search or optimize the network. Using readout guidance was a good start, but its size is far beyond what is actually needed (during training, you can see that most features are unused). The CNNs we used were not optimized for the task, and some tuning or investigation into this could significantly improve the results.
+
+The last point I would like to make is about the choice of encoder.
+One can create w = encoder(y), where the encoder is some encoder (could be anything, for example, DINO), and the learned operators learn to transform the latents into degraded versions in this space. Choosing "encoder" as the VAE encoder of SD was natural, but we could probably use much better encoders.
