@@ -1,6 +1,6 @@
 # SILO: Solving Inverse Problems with Latent Operators - ICCV 2025
 
-[project page here]([url](https://ronraphaeli.github.io/SILO-website/))
+https://ronraphaeli.github.io/SILO-website/
 
 We aim to make SILO as reproducible as possible.
 we begin with the contents of this repo, and than, provide some additional insights on SILO, and future work.
