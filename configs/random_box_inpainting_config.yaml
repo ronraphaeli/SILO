@@ -1,0 +1,13 @@
+measurement:
+  operator:
+    name: inpainting
+  mask_opt:
+    mask_type: box
+    mask_len_range: !!python/tuple [256, 257] 
+    image_size: 512
+    random: True
+
+
+  noise:
+    name: gaussian
+    sigma: 0.02

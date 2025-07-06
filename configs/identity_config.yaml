@@ -1,0 +1,7 @@
+measurement:
+  operator:
+    name: identity
+  
+  noise: 
+    name: gaussian
+    sigma: 0.00

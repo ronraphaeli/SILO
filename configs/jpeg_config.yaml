@@ -1,0 +1,8 @@
+measurement:
+  operator:
+    name: jpeg
+    quality: 10
+
+  noise: 
+    name: gaussian
+    sigma: 0.02
